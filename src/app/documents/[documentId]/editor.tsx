@@ -4,15 +4,22 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import StarterKit from "@tiptap/starter-kit";
+import { Color } from "@tiptap/extension-color";
+import Highlight from "@tiptap/extension-highlight";
+import TextAlign from "@tiptap/extension-text-align";
 import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from "@tiptap/extension-text-style";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import Image from "@tiptap/extension-image";
+import Link from "@tiptap/extension-link";
 import ImageResize from "tiptap-extension-resize-image";
 import Underline from "@tiptap/extension-underline";
 
 import { useEditorStore } from "@/store/use-editor-store";
+import { FontSizeExtension } from "@/extensions/font-size";
 
 export default function Editor() {
   const { setEditor } = useEditorStore();
@@ -60,6 +67,22 @@ export default function Editor() {
     },
     extensions: [
       StarterKit,
+      FontFamily,
+      FontSizeExtension,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+      Color,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        defaultProtocol: "https",
+        protocols: ["http", "https"],
+      }),
+      Highlight.configure({
+        multicolor: true,
+      }),
+      TextStyle,
       TaskItem.configure({ nested: true }),
       TaskList,
       Table.configure({
