@@ -641,8 +641,8 @@ export default function Toolbar() {
       {
         label: "Comment",
         icon: MessageSquarePlusIcon,
-        isActive: false,
-        onClick: () => console.log("todo: comment"),
+        isActive: editor?.isActive("liveblocksCommentMark"),
+        onClick: () => editor?.chain().focus().addPendingComment().run(),
       },
 
       {
