@@ -26,7 +26,7 @@ export function Document({ preloadedDocument }: Document) {
           <Toolbar />
         </div>
         <div className="pt-[140px] print:pt-0">
-          <Editor />
+          <Editor initialContent={document.initialContent} />
         </div>
       </div>
     </Room>
