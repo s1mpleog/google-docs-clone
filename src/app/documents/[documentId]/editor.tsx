@@ -75,6 +75,7 @@ export default function Editor({ initialContent }: EditorProps) {
       setEditor(editor);
     },
 
+    autofocus: true,
     immediatelyRender: false,
     editorProps: {
       attributes: {
